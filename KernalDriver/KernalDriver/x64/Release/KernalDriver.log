@@ -1,0 +1,19 @@
+﻿  Building 'KernalDriver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\KernalDriver.inf
+  Stamping [Version] section with DriverVer=10/20/2023,17.3.49.966
+  KernalDriver.vcxproj -> C:\Users\C\Desktop\Projects\KernalDriver\x64\Release\KernalDriver.sys
+  Driver is 'Universal'.
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\C\Desktop\Projects\KernalDriver\x64\Release\KernalDriver\kernaldriver.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\C\Desktop\Projects\KernalDriver\x64\Release\KernalDriver\kernaldriver.cat
+  

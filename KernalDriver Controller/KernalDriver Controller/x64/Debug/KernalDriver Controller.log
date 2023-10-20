@@ -1,0 +1,11 @@
+﻿  KernalDriver Controller.cpp
+C:\Users\C\Desktop\Projects\KernalDriver Controller\KernalDriver Controller\KernalInterface.hpp(20,122): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\C\Desktop\Projects\KernalDriver Controller\KernalDriver Controller\KernalInterface.hpp(33,130): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\C\Desktop\Projects\KernalDriver Controller\KernalDriver Controller\KernalDriver Controller.cpp(18,79): warning C4244: 'argument': conversion from 'intptr_t' to 'ULONG', possible loss of data
+C:\Users\C\Desktop\Projects\KernalDriver Controller\KernalDriver Controller\KernalInterface.hpp(51,22): warning C4244: '=': conversion from 'SIZE_T' to 'ULONG', possible loss of data
+C:\Users\C\Desktop\Projects\KernalDriver Controller\KernalDriver Controller\KernalDriver Controller.cpp(17,45): message : see reference to function template instantiation 'type KernalInterface::ReadVirtualMem<intptr_t>(ULONG,ULONG,SIZE_T)' being compiled
+          with
+          [
+              type=intptr_t
+          ]
+  KernalDriver Controller.vcxproj -> C:\Users\C\Desktop\Projects\KernalDriver Controller\x64\Debug\KernalDriver Controller.exe
