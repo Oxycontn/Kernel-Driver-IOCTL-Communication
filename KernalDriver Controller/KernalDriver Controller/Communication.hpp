@@ -9,18 +9,18 @@
 
 typedef struct _KERNAL_READ_REQUEST
 {
-	ULONG ProcessId;
-	ULONG Address;
+	int ProcessId;
+	uintptr_t Address;
 	PVOID pBuff;
-	ULONG Size;
+	SIZE_T Size;
 
 } KERNAL_READ_REQUEST, * PKERNAL_READ_REQUEST;
 
 typedef struct _KERNAL_WRITE_REQUEST
 {
-	ULONG ProcessId;
-	ULONG Address;
+	int ProcessId;
+	uintptr_t Address;
 	PVOID pBuff;
-	ULONG Size;
+	SIZE_T Size;
 
 } KERNAL_WRITE_REQUEST, * PKERNAL_WRITE_REQUEST;

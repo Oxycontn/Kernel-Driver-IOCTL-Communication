@@ -1,4 +1,5 @@
 #include "memory.h"
+#include "Message.h"
 
 NTSTATUS KernalReadVirtualMem(PEPROCESS Process, PVOID SourceAddress, PVOID TargetAddress, SIZE_T Size)
 {

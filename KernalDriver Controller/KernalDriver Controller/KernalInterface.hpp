@@ -2,35 +2,35 @@
 
 #include "Communication.hpp"
 
-class KernalInterface
+class KernelInterface
 {
 public:
 	HANDLE hDriver;
 
-	KernalInterface(LPCSTR RegistryPath)
+	KernelInterface(LPCSTR RegistryPath)
 	{
 		hDriver = CreateFileA(RegistryPath, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, 0, OPEN_EXISTING, 0, 0);
 	}
 
-	DWORD GetClientAddress()
+	ULONG64 GetClientAddress()
 	{
-		ULONG Address;
+		ULONG64 Address;
 		DWORD Bytes;
 
-		if (DeviceIoControl(hDriver, IO_GET_CLIENTADDRESS, &Address, sizeof(Address), &Address, sizeof(Address), &Bytes, NULL));
+		if (DeviceIoControl(hDriver, IO_GET_CLIENTADDRESS, &Address, sizeof(Address), &Address, sizeof(Address), &Bytes, NULL))
 		{
 			return Address;
 		}
 
-		return 0;
+		return false;
 	}
 
-	DWORD GetProcessId()
+	int GetProcessId()
 	{
-		ULONG ProcessID;
+		int ProcessID;
 		DWORD Bytes;
 
-		if (DeviceIoControl(hDriver, IO_REQUEST_PROCESSID, &ProcessID, sizeof(ProcessID), &ProcessID, sizeof(ProcessID), &Bytes, NULL));
+		if (DeviceIoControl(hDriver, IO_REQUEST_PROCESSID, &ProcessID, sizeof(ProcessID), &ProcessID, sizeof(ProcessID), &Bytes, NULL))
 		{
 			return ProcessID;
 		}
@@ -39,7 +39,7 @@ public:
 	}
 
 	template <typename type>
-	type ReadVirtualMem(ULONG ProcessID, ULONG ReadAddress, SIZE_T Size)
+	type ReadVirtualMem(int ProcessID, uintptr_t ReadAddress, SIZE_T Size)
 	{
 		type Buffer;
 
@@ -59,7 +59,7 @@ public:
 	}
 
 	template <typename type>
-	bool WriteVirtualMem(ULONG ProcessID, ULONG WriteAddress, type WriteValue, SIZE_T Size)
+	bool WriteVirtualMem(int ProcessID, uintptr_t WriteAddress, type WriteValue, SIZE_T Size)
 	{
 
 		DWORD Bytes;
@@ -78,4 +78,5 @@ public:
 
 		return false;
 	}
+
 };

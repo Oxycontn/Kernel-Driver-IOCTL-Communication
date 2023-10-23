@@ -14,7 +14,7 @@ NTSTATUS CreateCall(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 
 	IoCompleteRequest(Irp, IO_NO_INCREMENT);
 
-	DebugMessage("CreateCall was Called, Connection Started\n");
+	DebugMessage("Connection Started\n");
 
 	return STATUS_SUCCESS;
 }
@@ -33,10 +33,10 @@ NTSTATUS IoControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 
 	if (ControlCode == IO_GET_CLIENTADDRESS)
 	{
-		PULONG OutPut = (PULONG)Irp->AssociatedIrp.SystemBuffer;
-		*OutPut = CSGOCliendDllAddress;
+		PULONG64 OutPut = (PULONG64)Irp->AssociatedIrp.SystemBuffer;
+		*OutPut = CSGOClientDllAddress;
 
-		DebugMessage("Client Address Requested");
+		DebugMessage("Client.dll Address Requested\n");
 
 		Status = STATUS_SUCCESS;
 		ByteIO = sizeof(*OutPut);
@@ -46,7 +46,7 @@ NTSTATUS IoControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 		PULONG OutPut = (PULONG)Irp->AssociatedIrp.SystemBuffer;
 		*OutPut = ProcessID;
 
-		DebugMessage("Process ID Requested");
+		DebugMessage("Process ID Requested \n");
 
 		Status = STATUS_SUCCESS;
 		ByteIO = sizeof(*OutPut);
@@ -56,20 +56,27 @@ NTSTATUS IoControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 		PKERNAL_READ_REQUEST ReadInput = (PKERNAL_READ_REQUEST)Irp->AssociatedIrp.SystemBuffer;
 		PEPROCESS Process;
 
+		DebugMessage("Read Mem Requested \n");
+
 		if (NT_SUCCESS(PsLookupProcessByProcessId(ReadInput->ProcessId, &Process)))
 		{
+			DebugMessage("Success (Read) \n");
 			KernalReadVirtualMem(Process, ReadInput->Address, ReadInput->pBuff, ReadInput->Size);
 			Status = STATUS_SUCCESS;
 			ByteIO = sizeof(KERNAL_READ_REQUEST);
 		}
+
 	}
 	else if (ControlCode == IO_WRITE_REQUEST)
 	{
 		PKERNAL_WRITE_REQUEST WriteInput = (PKERNAL_WRITE_REQUEST)Irp->AssociatedIrp.SystemBuffer;
 		PEPROCESS Process;
 
+		DebugMessage("Write Mem Requested \n");
+
 		if (NT_SUCCESS(PsLookupProcessByProcessId(WriteInput->ProcessId, &Process)))
 		{
+			DebugMessage("Success (Write) \n");
 			KernalWriteVirtualMem(Process, WriteInput->pBuff, WriteInput->Address, WriteInput->Size);
 			Status = STATUS_SUCCESS;
 			ByteIO = sizeof(KERNAL_READ_REQUEST);
@@ -96,7 +103,7 @@ NTSTATUS CloseCall(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 
 	IoCompleteRequest(Irp, IO_NO_INCREMENT);
 
-	DebugMessage("CloseCall was Called, Connection Ended\n");
+	DebugMessage("Connection Ended\n");
 
 	return STATUS_SUCCESS;
 }

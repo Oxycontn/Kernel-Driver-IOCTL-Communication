@@ -6,15 +6,15 @@
 
 PLOAD_IMAGE_NOTIFY_ROUTINE ImageLoadCallback(PUNICODE_STRING FullImageName, HANDLE ProcessId, PIMAGE_INFO ImageInfo)
 {
-
-	if (wcsstr(FullImageName->Buffer, L"\\Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\bin\\win64\\client.dll"))
+	if (wcsstr(FullImageName->Buffer, L"\\csgo\\bin\\win64\\client.dll"))
 	{
-		DebugMessage("CSGO2 Client Dll found\n");
+		CSGOClientDllAddress = ImageInfo->ImageBase;
 
-		CSGOCliendDllAddress = ImageInfo->ImageBase;
-		ProcessID = (ULONG) ProcessId;
+		DebugMessage("CSGO2 Client.dll Found: %#010x \n", CSGOClientDllAddress);
 
-		DebugMessage("ProcessID: %d \n", ProcessId);
+		ProcessID = ProcessId;
+
+		DebugMessage("ProcessID: %#010x \n", ProcessID);
 	}
 	return STATUS_SUCCESS;
 }

@@ -19,10 +19,14 @@ namespace Offsets
     constexpr std::ptrdiff_t dwGlobalVars = 0x1699F40;
     constexpr std::ptrdiff_t dwGlowManager = 0x17F3BF8;
     constexpr std::ptrdiff_t dwInterfaceLinkList = 0x197F2B8;
-    constexpr std::ptrdiff_t dwLocalPlayerController = 0x16B18A0; //0x1885C28
+    constexpr std::ptrdiff_t dwLocalPlayerController = 0x16B18A0;
     constexpr std::ptrdiff_t dwLocalPlayerPawn = 0x1885C28;
     constexpr std::ptrdiff_t dwPlantedC4 = 0x188CAD0;
     constexpr std::ptrdiff_t dwViewAngles = 0x18E5740;
     constexpr std::ptrdiff_t dwViewMatrix = 0x1886710;
     constexpr std::ptrdiff_t dwViewRender = 0x1887108;
+    constexpr std::ptrdiff_t m_hPawn = 0x5DC;
+    constexpr std::ptrdiff_t m_iTeamNum = 0x3BF;
+    constexpr std::ptrdiff_t m_iHealth = 0x32C;
+    constexpr std::ptrdiff_t m_flFlashMaxAlpha = 0x144C;
 }
