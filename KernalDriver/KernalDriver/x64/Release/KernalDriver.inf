@@ -8,7 +8,7 @@ Class=System ; TODO: specify appropriate Class
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
 Provider=%ManufacturerName%
 CatalogFile=KernalDriver.cat
-DriverVer = 10/23/2023,16.15.57.62
+DriverVer = 10/27/2023,18.4.40.115
 PnpLockdown=1
 
 [DestinationDirs]

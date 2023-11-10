@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Communication.hpp"
-
 class KernelInterface
 {
 public:
@@ -18,6 +16,19 @@ public:
 		DWORD Bytes;
 
 		if (DeviceIoControl(hDriver, IO_GET_CLIENTADDRESS, &Address, sizeof(Address), &Address, sizeof(Address), &Bytes, NULL))
+		{
+			return Address;
+		}
+
+		return false;
+	}
+
+	ULONG64 GetEngineAddress()
+	{
+		ULONG64 Address;
+		DWORD Bytes;
+
+		if (DeviceIoControl(hDriver, IO_GET_ENGINEADDRESS, &Address, sizeof(Address), &Address, sizeof(Address), &Bytes, NULL))
 		{
 			return Address;
 		}

@@ -1,9 +1,8 @@
 ﻿  Building 'KernalDriver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping x64\Release\KernalDriver.inf
-  Stamping [Version] section with DriverVer=10/23/2023,16.15.57.62
+  Stamping [Version] section with DriverVer=10/27/2023,18.4.40.115
   Communication.c
   Driver.c
-  memory.c
   Generating Code...
   KernalDriver.vcxproj -> C:\Users\C\Desktop\Projects\KernalDriver\x64\Release\KernalDriver.sys
   Done Adding Additional Store

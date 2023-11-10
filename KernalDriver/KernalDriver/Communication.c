@@ -82,6 +82,16 @@ NTSTATUS IoControl(PDEVICE_OBJECT DeviceObject, PIRP Irp)
 			ByteIO = sizeof(KERNAL_READ_REQUEST);
 		}
 	}
+	else if (ControlCode == IO_GET_ENGINEADDRESS)
+	{
+		PULONG64 OutPut = (PULONG64)Irp->AssociatedIrp.SystemBuffer;
+		*OutPut = CSGOEngineDllAddress;
+
+		DebugMessage("Engine.dll Address Requested\n");
+
+		Status = STATUS_SUCCESS;
+		ByteIO = sizeof(*OutPut);
+	}
 	else
 	{
 		ByteIO = 0;

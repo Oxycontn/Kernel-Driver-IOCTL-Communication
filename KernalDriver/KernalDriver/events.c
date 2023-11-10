@@ -16,5 +16,11 @@ PLOAD_IMAGE_NOTIFY_ROUTINE ImageLoadCallback(PUNICODE_STRING FullImageName, HAND
 
 		DebugMessage("ProcessID: %#010x \n", ProcessID);
 	}
+	else if (wcsstr(FullImageName->Buffer, L"\\Counter-Strike Global Offensive\\game\\bin\\win64\\engine2.dll"))
+	{
+		CSGOEngineDllAddress = ImageInfo->ImageBase;
+
+		DebugMessage("CSGO2 Engine.dll Found: %#010x \n", CSGOClientDllAddress);
+	}
 	return STATUS_SUCCESS;
 }

@@ -1,2 +1,1 @@
-﻿  KernalDriver Controller.cpp
-  KernalDriver Controller.vcxproj -> C:\Users\C\Desktop\Projects\KernalDriver Controller\x64\Debug\KernalDriver Controller.exe
+﻿cl : command line  error D8016: '/ZI' and '/GL' command-line options are incompatible
